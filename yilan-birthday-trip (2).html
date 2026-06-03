@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宜蘭慶生小旅行 · 6/13–6/14</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #1c1a18;
+  --ink-soft: #3a3630;
+  --gold: #b8955a;
+  --gold-light: #d4b07a;
+  --gold-pale: #f0e6d0;
+  --cream: #faf7f2;
+  --parchment: #f3ede3;
+  --stone: #e8e0d4;
+  --mist: #c8bfb2;
+  --rose: #c4857a;
+  --sage: #7a9688;
+  --warm-white: #fdfbf8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ── DECORATIVE BORDER FRAME ── */
+.page-frame {
+  position: fixed;
+  inset: 16px;
+  border: 1px solid rgba(184,149,90,0.25);
+  pointer-events: none;
+  z-index: 999;
+}
+.page-frame::before, .page-frame::after {
+  content: '◆';
+  position: absolute;
+  color: rgba(184,149,90,0.5);
+  font-size: 8px;
+}
+.page-frame::before { top: -6px; left: 50%; transform: translateX(-50%); }
+.page-frame::after { bottom: -6px; left: 50%; transform: translateX(-50%); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,149,90,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(196,133,122,0.06) 0%, transparent 60%),
+    var(--cream);
+}
+
+.hero-ornament {
+  font-size: 11px;
+  letter-spacing: 8px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(52px, 8vw, 96px);
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 300;
+  font-size: clamp(13px, 2vw, 15px);
+  letter-spacing: 6px;
+  color: var(--mist);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s forwards;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 48px;
+  opacity: 0;
+  animation: fadeIn 1s ease 0.8s forwards;
+}
+
+.hero-dates {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  animation: fadeUp 1s ease 1s forwards;
+}
+
+.hero-date-block {
+  text-align: center;
+}
+
+.hero-date-block .day-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--mist);
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+
+.hero-date-block .day-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.hero-date-block .month {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+  margin-top: 2px;
+}
+
+.hero-dates-sep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-dates-sep span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--gold);
+}
+
+.hero-dates-sep .sep-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.6s forwards;
+}
+
+.scroll-hint span {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--mist);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.scroll-hint .arrow {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--mist), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* ── MAIN ── */
+.main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px 120px;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  text-align: center;
+  padding: 80px 0 56px;
+  position: relative;
+}
+
+.section-header::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--stone) 20%, var(--stone) 80%, transparent);
+}
+
+.section-header-inner {
+  display: inline-block;
+  background: var(--cream);
+  padding: 0 32px;
+  position: relative;
+}
+
+.section-header .day-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 32px;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+}
+
+.section-header .route-sub {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--mist);
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+/* ── TIMELINE ── */
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 72px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--stone) 5%, var(--stone) 95%, transparent);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0;
+  margin-bottom: 0;
+  position: relative;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-time {
+  padding: 28px 20px 28px 0;
+  text-align: right;
+  position: relative;
+}
+
+.timeline-time .time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--mist);
+  font-style: italic;
+  line-height: 1;
+  display: block;
+}
+
+.timeline-time .time-range {
+  font-size: 11px;
+  color: var(--stone);
+  display: block;
+  margin-top: 2px;
+}
+
+/* Dot on timeline */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 68px;
+  top: 34px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1.5px solid var(--mist);
+  z-index: 1;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.timeline-item:hover::after {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+
+.timeline-item.highlight-item::after {
+  border-color: var(--gold);
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184,149,90,0.15);
+}
+
+.timeline-content {
+  padding: 24px 0 24px 32px;
+  border-bottom: 1px solid rgba(232,224,212,0.6);
+}
+
+.timeline-item:last-child .timeline-content {
+  border-bottom: none;
+}
+
+.timeline-item:hover .timeline-content {
+  background: rgba(240,230,208,0.15);
+}
+
+.activity-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.activity-name .emoji {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.activity-name .tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--rose);
+  background: rgba(196,133,122,0.1);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.activity-note {
+  font-size: 13px;
+  color: var(--mist);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.activity-note strong {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+/* ── FEATURE BLOCK ── */
+.feature-block {
+  margin: 0 0 0 32px;
+  padding: 20px 24px;
+  background: var(--parchment);
+  border-left: 2px solid var(--gold);
+  position: relative;
+}
+
+.feature-block::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--parchment);
+  padding: 0 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+
+/* ── DIVIDER ORNAMENT ── */
+.ornament-divider {
+  text-align: center;
+  padding: 24px 0;
+  color: var(--stone);
+  font-size: 14px;
+  letter-spacing: 8px;
+}
+
+/* ── REMINDERS ── */
+.reminders-section {
+  margin-top: 80px;
+}
+
+.reminders-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.reminders-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 40px;
+}
+
+.reminders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--stone);
+  border: 1px solid var(--stone);
+}
+
+.reminder-item {
+  background: var(--cream);
+  padding: 24px 20px;
+  transition: background 0.2s ease;
+}
+
+.reminder-item:hover {
+  background: var(--parchment);
+}
+
+.reminder-item.urgent {
+  background: rgba(196,133,122,0.06);
+}
+
+.reminder-item.urgent:hover {
+  background: rgba(196,133,122,0.1);
+}
+
+.reminder-icon {
+  font-size: 16px;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.reminder-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.reminder-item.urgent .reminder-title {
+  color: var(--rose);
+}
+
+.reminder-desc {
+  font-size: 12px;
+  color: var(--mist);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.urgent-badge {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--rose);
+  border: 1px solid rgba(196,133,122,0.4);
+  padding: 1px 8px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+/* ── ROUTE ── */
+.route-section {
+  margin-top: 80px;
+}
+
+.route-day {
+  margin-bottom: 32px;
+}
+
+.route-day-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.route-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-stop {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding: 5px 14px;
+  border: 1px solid var(--stone);
+  background: var(--warm-white);
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.route-stop:hover {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+
+.route-stop.key {
+  background: var(--gold-pale);
+  border-color: rgba(184,149,90,0.4);
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.route-arrow {
+  color: var(--mist);
+  font-size: 12px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 80px 40px 60px;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 48px;
+}
+
+.footer-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.footer-sub {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--mist);
+  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.footer-ornament {
+  margin-top: 40px;
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--stone);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .main { padding: 0 20px 80px; }
+  .hero { padding: 60px 24px; }
+  .hero-title { font-size: 44px; }
+  .hero-date-block .day-num { font-size: 40px; }
+  .timeline::before { left: 56px; }
+  .timeline-item::after { left: 52px; }
+  .timeline-time { padding: 24px 12px 24px 0; }
+  .timeline-content { padding: 20px 0 20px 24px; }
+  .reminders-grid { grid-template-columns: 1fr; }
+  .page-frame { display: none; }
+}
+
+@media print {
+  .page-frame, body::before, .scroll-hint { display: none; }
+  body { background: white; }
+  .hero { min-height: auto; padding: 40px; }
+  .timeline-item { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-frame"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-ornament">Happy Birthday · Joyeux Anniversaire</div>
+  <h1 class="hero-title">宜蘭<em>慶生</em><br>小旅行</h1>
+  <p class="hero-subtitle">BIRTHDAY TRIP · YILAN · 2025</p>
+  <div class="hero-divider"></div>
+  <div class="hero-dates">
+    <div class="hero-date-block">
+      <div class="day-name">Day One</div>
+      <div class="day-num">13</div>
+      <div class="month">June · Sat</div>
+    </div>
+    <div class="hero-dates-sep">
+      <div class="sep-line"></div>
+      <span>♦</span>
+      <div class="sep-line" style="background: linear-gradient(to top, rgba(184,149,90,0.6), transparent);"></div>
+    </div>
+    <div class="hero-date-block">
+      <div class="day-name">Day Two</div>
+      <div class="day-num">14</div>
+      <div class="month">June · Sun</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll</span>
+    <div class="arrow"></div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- DAY 1 -->
+  <div class="section-header">
+    <div class="section-header-inner">
+      <span class="day-label">Day One · 6 / 13</span>
+      <h2>台北 → 頭城 → 羅東 → 蘇澳</h2>
+      <p class="route-sub">MUSEUM · LUNCH · BIRTHDAY CAKE · HOTEL</p>
+    </div>
+  </div>
+
+  <div class="timeline" id="day1-timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">09:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🚗</span> 台北出發</div>
+        <div class="activity-note">輕鬆出門，不用趕早</div>
+      </div>
+    </div>
+
+    <div class="timeline-item highlight-item">
+      <div class="timeline-time"><span class="time">10:30</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">📸</span> 蘭陽博物館 · 戶外拍照</div>
+        <div class="activity-note">建築本身即是打卡景點，在戶外拍幾張就走，不入館</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">11:15</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🚗</span> 頭城 → 羅東</div>
+        <div class="activity-note">約 30 分鐘車程，前往午餐</div>
+      </div>
+    </div>
+
+    <div class="timeline-item highlight-item">
+      <div class="timeline-time"><span class="time">13:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🍽️</span> 駿懷舊餐廳 · 午餐</div>
+        <div class="activity-note">羅東在地人氣老店，懷舊氛圍加分</div>
+      </div>
+    </div>
+
+    <div class="timeline-item highlight-item">
+      <div class="timeline-time"><span class="time">14:30</span></div>
+      <div class="timeline-content">
+        <div class="activity-name">
+          <span class="emoji">🎂</span> 越穗香 · 羅東店取蛋糕
+          <span class="tag">慶生蛋糕</span>
+        </div>
+        <div class="activity-note">吃完午餐順路取蛋糕，記得提前預訂好</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">15:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🚗</span> 羅東 → 蘇澳</div>
+        <div class="activity-note">約 20 分鐘，直殺飯店</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">15:30</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🏨</span> 煙波大飯店 · Check-in</div>
+        <div class="activity-note">放好行李與蛋糕，開始享受下午的泳池時光</div>
+      </div>
+    </div>
+
+    <div class="timeline-item highlight-item">
+      <div class="timeline-time">
+        <span class="time">16:00</span>
+        <span class="time-range">— 17:30</span>
+      </div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🏊</span> 無邊際泳池 &amp; 黃金雙泉</div>
+        <div class="activity-note">游泳、拍照、泡湯三連擊。<strong>下午採光最佳</strong>，泳池照片最好看。</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">17:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">✨</span> 梳洗換裝</div>
+        <div class="activity-note">準備出發，迎接今晚的慶生晚宴</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">18:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🚗</span> 出發 → 宜蘭市</div>
+        <div class="activity-note">約 30 分鐘車程</div>
+      </div>
+    </div>
+
+    <div class="timeline-item highlight-item">
+      <div class="timeline-time"><span class="time">18:30</span></div>
+      <div class="timeline-content">
+        <div class="activity-name">
+          <span class="emoji">🍷</span> 愛法餐廳 i-FRANCE
+          <span class="tag">慶生</span>
+        </div>
+        <div class="activity-note"><strong>務必提前訂位</strong>，備註慶生事宜。電洽 03-936-1655 #108 或 Inline 線上訂位。</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">21:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🌙</span> 回蘇澳 · 內埤海灘散步</div>
+        <div class="activity-note">30 分鐘車程，回飯店後再泡一回黃金雙泉，圓滿第一天</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ornament-divider">— ◆ —</div>
+
+  <!-- DAY 2 -->
+  <div class="section-header">
+    <div class="section-header-inner">
+      <span class="day-label">Day Two · 6 / 14</span>
+      <h2>蘇澳 → 龜山島 → 台北</h2>
+      <p class="route-sub">VIEWPOINT · BEACH · WHALE WATCHING · TURTLE ISLAND</p>
+    </div>
+  </div>
+
+  <div class="timeline" id="day2-timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">08:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">☕</span> 飯店早餐</div>
+        <div class="activity-note">悠閒享用，不需趕時間，好好感受清晨的蘇澳</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">09:30</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">📸</span> 南方澳觀景臺</div>
+        <div class="activity-note">5 分鐘車程，晨光下的港灣全景別有風情</div>
+      </div>
+    </div>
+
+    <div class="timeline-item highlight-item">
+      <div class="timeline-time"><span class="time">10:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🌊</span> 內埤海灘 · 情人灣晨遊</div>
+        <div class="activity-note">就在飯店旁，<strong>情侶散步的完美場景</strong>，留下旅行最後的美好記憶</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">10:45</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🏨</span> 退房</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">11:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🍜</span> 蘇澳市區 · 簡單午餐</div>
+        <div class="activity-note">蘇澳肉羹麵，或外帶正好鮮肉小籠包在車上享用</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">11:30</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🚗</span> 蘇澳 → 烏石港</div>
+        <div class="activity-note">約 40 分鐘，沿海公路前行</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">12:15</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🎫</span> 烏石港報到</div>
+        <div class="activity-note">提前 45 分鐘到達，核對身分證件、領取船票</div>
+      </div>
+    </div>
+
+    <div class="timeline-item highlight-item">
+      <div class="timeline-time">
+        <span class="time">13:00</span>
+        <span class="time-range">— 17:00</span>
+      </div>
+      <div class="timeline-content">
+        <div class="activity-name">
+          <span class="emoji">🐬</span> 龜山島 · 登島賞鯨繞島
+          <span class="tag">壓軸</span>
+        </div>
+        <div class="activity-note">約 4 小時行程，下午船班回程恰好欣賞落日海面。<strong>現在就要預約</strong>——KKday / Klook 或北極星噶瑪蘭、烏石傳奇等船家。</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">17:00</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🚗</span> 返回台北</div>
+        <div class="activity-note">約 1 小時車程</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-time"><span class="time">18:30</span></div>
+      <div class="timeline-content">
+        <div class="activity-name"><span class="emoji">🏠</span> 到家</div>
+        <div class="activity-note">慶生之旅圓滿落幕，帶回滿滿美好的回憶</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- REMINDERS -->
+  <div class="reminders-section">
+    <div class="ornament-divider" style="margin-bottom: 40px;">— ◆ —</div>
+    <h3 class="reminders-title">行前注意事項</h3>
+    <span class="reminders-title-en">Important Reminders</span>
+
+    <div class="reminders-grid">
+      <div class="reminder-item urgent">
+        <div class="urgent-badge">立即處理</div>
+        <div class="reminder-icon">🐬</div>
+        <div class="reminder-title">龜山島 13:00 船班</div>
+        <div class="reminder-desc">下午班次有限，<strong>現在就預約</strong>。KKday / Klook，或洽北極星噶瑪蘭、烏石傳奇等船家。</div>
+      </div>
+
+      <div class="reminder-item urgent">
+        <div class="urgent-badge">立即處理</div>
+        <div class="reminder-icon">🍷</div>
+        <div class="reminder-title">愛法餐廳訂位</div>
+        <div class="reminder-desc">週六晚熱門，建議盡快預訂。Inline 線上訂位或電洽 03-936-1655 #108，記得備註慶生。</div>
+      </div>
+
+      <div class="reminder-item">
+        <div class="reminder-icon">🆔</div>
+        <div class="reminder-title">身分證 / 健保卡</div>
+        <div class="reminder-desc">登島必備，出發前確認所有人都帶齊</div>
+      </div>
+
+      <div class="reminder-item">
+        <div class="reminder-icon">🚗</div>
+        <div class="reminder-title">晚餐開車注意</div>
+        <div class="reminder-desc">蘇澳往返宜蘭市皆需開車，駕駛晚宴期間不飲酒，或安排計程車接送</div>
+      </div>
+
+      <div class="reminder-item">
+        <div class="reminder-icon">☀️</div>
+        <div class="reminder-title">防曬準備</div>
+        <div class="reminder-desc">博物館戶外、泳池、出海三連曬，防曬乳要備足，帽子和薄外套也建議攜帶</div>
+      </div>
+
+      <div class="reminder-item">
+        <div class="reminder-icon">💊</div>
+        <div class="reminder-title">暈船藥</div>
+        <div class="reminder-desc">出發前 30 分鐘服用，容易暈船者建議前晚就準備好</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROUTE -->
+  <div class="route-section">
+    <div class="ornament-divider" style="margin: 40px 0;">— ◆ —</div>
+    <h3 class="reminders-title">路線總覽</h3>
+    <span class="reminders-title-en">Route Overview</span>
+
+    <div class="route-day">
+      <div class="route-day-label">Day One · 6 / 13</div>
+      <div class="route-flow">
+        <span class="route-stop">台北</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">頭城（蘭陽博物館拍照）</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">羅東（駿懷舊午餐）</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop key">越穗香取蛋糕 🎂</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">煙波蘇澳（泳池）</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop key">宜蘭市 · 愛法慶生 🍷</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">回飯店</span>
+      </div>
+    </div>
+
+    <div class="route-day">
+      <div class="route-day-label">Day Two · 6 / 14</div>
+      <div class="route-flow">
+        <span class="route-stop">飯店</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">南方澳觀景臺 · 海灘</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">蘇澳午餐</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">烏石港</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop key">龜山島 🐬</span>
+        <span class="route-arrow">→</span>
+        <span class="route-stop">台北 🏠</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">Happy Birthday, my love.</div>
+  <div class="footer-sub">生日快樂 · 願每一刻都值得記憶</div>
+  <div class="footer-ornament">◆ &nbsp;&nbsp;◆ &nbsp;&nbsp;◆</div>
+</footer>
+
+<script>
+  // Intersection observer for timeline items
+  const items = document.querySelectorAll('.timeline-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  items.forEach(item => observer.observe(item));
+
+  // Stagger siblings in same timeline
+  document.querySelectorAll('.timeline').forEach(tl => {
+    tl.querySelectorAll('.timeline-item').forEach((item, i) => {
+      item.style.transitionDelay = `${i * 60}ms`;
+    });
+  });
+</script>
+
+</body>
+</html>
